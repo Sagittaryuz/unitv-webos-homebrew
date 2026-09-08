@@ -7,7 +7,7 @@
   "iconUri": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/icon.png",
   "sourceUrl": "https://github.com/Sagittaryuz/unitv-webos-homebrew",
   "rootRequired": false,
-  "ipkUrl": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/com.marcos.app.unitvnet_1.0.0_all.ipk",
+  "ipkUrl": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/com.marcos.app.unitvnet_1.0.0_all.ipk?rev=2",
   "ipkHash": {
     "sha256": "ed04095ed7fbdc4cea2c60104d8750774e92663b066a1bcb479d8682d1478939"
   },
