@@ -1,0 +1,9 @@
+{
+  "id": "com.marcos.app.unitvnet",
+  "version": "1.0.3",
+  "vendor": "Marcos Rodrigues Pires",
+  "type": "web",
+  "main": "index.html",
+  "title": "UniTV Net",
+  "icon": "icon.png"
+}
