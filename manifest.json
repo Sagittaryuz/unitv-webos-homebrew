@@ -1,0 +1,16 @@
+{
+  "id": "com.marcos.app.unitvnet",
+  "version": "1.0.0",
+  "type": "web",
+  "title": "UniTV Net",
+  "appDescription": "Atalho em tela cheia para a versão Web do UniTV Net no LG webOS.",
+  "iconUri": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/icon.png",
+  "sourceUrl": "https://github.com/Sagittaryuz/unitv-webos-homebrew",
+  "rootRequired": false,
+  "ipkUrl": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/com.marcos.app.unitvnet_1.0.0_all.ipk",
+  "ipkHash": {
+    "sha256": "5a63c4b5af7fce706eeb2aefb96dc722971ad3670d2df3825f5c31080cab3575"
+  },
+  "ipkSize": 3602
+}
+
