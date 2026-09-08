@@ -2,8 +2,8 @@
 
 Wrapper webOS para abrir a versão Web do UniTV Net em tela cheia.
 
-Versão: **1.0.2**
+Versão: **1.0.3**
 
 Destino Web: `https://www.uvnetwebs.net/`
 
-A versão 1.0.2 recompõe o IPK a partir da estrutura da versão 1.0.0 que instalou corretamente na TV, preservando o formato interno do pacote e alterando apenas versão e endereço Web.
+A versão 1.0.3 foi gerada pelo `ares-package` oficial do webOS CLI (`@webos-tools/cli` 3.2.5) e validada pelo próprio `ares-package -I` antes da publicação. O pacote é um Hosted Web App mínimo e redireciona para a versão Web do UniTV Net.
