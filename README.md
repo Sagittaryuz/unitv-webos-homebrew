@@ -22,4 +22,3 @@ No Homebrew Channel da TV, abra Settings > Add repository e informe a URL acima.
 Depois atualize a lista, abra UniTV Net e instale.
 
 Observação: este projeto é apenas um wrapper webOS que abre a versão Web do serviço. O funcionamento de login, CAPTCHA e reprodução de vídeo depende da compatibilidade do site remoto com o navegador/Chromium da versão do webOS da TV.
-
