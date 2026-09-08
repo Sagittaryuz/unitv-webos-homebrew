@@ -1,9 +1,14 @@
 {
   "id": "com.marcos.app.unitvnet",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "vendor": "Marcos Rodrigues Pires",
   "type": "web",
   "main": "index.html",
   "title": "UniTV Net",
-  "icon": "icon.png"
+  "icon": "icon.png",
+  "trustLevel": "netcast",
+  "vendorExtension": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "allowCrossDomain": true
+  }
 }

@@ -2,8 +2,10 @@
 
 Wrapper webOS para abrir a versão Web do UniTV Net em tela cheia.
 
-Versão: **1.0.4**
+Versão: **1.0.5 experimental**
 
-Destino Web: `https://www.uvnetwebs.com/`
+Destino Web: `https://www.uvnetweb.pro/`
 
-A versão 1.0.4 foi gerada pelo `ares-package` oficial do webOS CLI (`@webos-tools/cli` 3.2.5) e validada pelo próprio `ares-package -I` antes da publicação. O endereço foi atualizado de `uvnetwebs.net` para o novo endereço Web `uvnetwebs.com`.
+A versão 1.0.5 usa `trustLevel: netcast` e substitui o User-Agent do WebAppMgr por um Chrome moderno, mantendo o CAPTCHA original do serviço. O objetivo é testar se o desafio volta a aparecer quando o site deixa de identificar o navegador LG como antigo. Também habilita `allowCrossDomain` no modo netcast.
+
+O pacote é gerado e validado pelo `ares-package` oficial do webOS CLI antes de ser publicado no repositório Homebrew.

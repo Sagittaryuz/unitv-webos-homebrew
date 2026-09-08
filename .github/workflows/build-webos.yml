@@ -30,17 +30,20 @@ jobs:
       - name: Package with ares-package
         run: |
           set -euxo pipefail
+          VERSION=$(node -p "require('./app/appinfo.json').version")
+          FILENAME="com.marcos.app.unitvnet_${VERSION}_all.ipk"
           mkdir -p build
           cp icon.png app/icon.png
           ares-package -o build app
-          ares-package -I build/com.marcos.app.unitvnet_1.0.4_all.ipk
-          mv build/com.marcos.app.unitvnet_1.0.4_all.ipk ./com.marcos.app.unitvnet_1.0.4_all.ipk
+          ares-package -I "build/${FILENAME}"
+          mv "build/${FILENAME}" "./${FILENAME}"
 
       - name: Update Homebrew metadata
         run: |
           python3 - <<'PY'
           import hashlib, json
-          version = "1.0.4"
+          with open("app/appinfo.json", "r", encoding="utf-8") as f:
+              version = json.load(f)["version"]
           filename = f"com.marcos.app.unitvnet_{version}_all.ipk"
           with open(filename, "rb") as f:
               data = f.read()
@@ -77,9 +80,11 @@ jobs:
       - name: Commit verified package
         run: |
           set -euxo pipefail
+          VERSION=$(node -p "require('./app/appinfo.json').version")
+          FILENAME="com.marcos.app.unitvnet_${VERSION}_all.ipk"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add com.marcos.app.unitvnet_1.0.4_all.ipk manifest.json repo.json
-          git commit -m "Build UniTV Net 1.0.4 with official webOS CLI"
+          git add "${FILENAME}" manifest.json repo.json
+          git commit -m "Build UniTV Net ${VERSION} with official webOS CLI"
           git pull --rebase origin main
           git push
