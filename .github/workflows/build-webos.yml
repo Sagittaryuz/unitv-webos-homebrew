@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Install official webOS CLI
         run: npm install -g @webos-tools/cli@3.2.5
@@ -37,7 +37,7 @@ jobs:
       - name: Update Homebrew metadata
         run: |
           python3 - <<'PY'
-          import hashlib, json, os
+          import hashlib, json
           version = "1.0.3"
           filename = f"com.marcos.app.unitvnet_{version}_all.ipk"
           with open(filename, "rb") as f:
@@ -79,4 +79,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add com.marcos.app.unitvnet_1.0.3_all.ipk manifest.json repo.json
           git commit -m "Build UniTV Net 1.0.3 with official webOS CLI"
+          git pull --rebase origin main
           git push
