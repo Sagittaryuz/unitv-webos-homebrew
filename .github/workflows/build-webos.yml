@@ -1,0 +1,82 @@
+name: Build and publish webOS IPK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app/**"
+      - ".github/workflows/build-webos.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install official webOS CLI
+        run: npm install -g @webos-tools/cli@3.2.5
+
+      - name: Package with ares-package
+        run: |
+          set -euxo pipefail
+          mkdir -p build
+          cp icon.png app/icon.png
+          ares-package -o build app
+          ares-package -I build/com.marcos.app.unitvnet_1.0.3_all.ipk
+          mv build/com.marcos.app.unitvnet_1.0.3_all.ipk ./com.marcos.app.unitvnet_1.0.3_all.ipk
+
+      - name: Update Homebrew metadata
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os
+          version = "1.0.3"
+          filename = f"com.marcos.app.unitvnet_{version}_all.ipk"
+          with open(filename, "rb") as f:
+              data = f.read()
+          sha = hashlib.sha256(data).hexdigest()
+          size = len(data)
+          url = f"https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/{filename}"
+
+          with open("manifest.json", "r", encoding="utf-8") as f:
+              manifest = json.load(f)
+          manifest["version"] = version
+          manifest["ipkUrl"] = url
+          manifest["ipkHash"] = {"sha256": sha}
+          manifest["ipkSize"] = size
+          with open("manifest.json", "w", encoding="utf-8") as f:
+              json.dump(manifest, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+
+          with open("repo.json", "r", encoding="utf-8") as f:
+              repo = json.load(f)
+          m = repo["packages"][0]["manifest"]
+          m["version"] = version
+          m["ipkUrl"] = url
+          m["ipkHash"] = {"sha256": sha}
+          m["ipkSize"] = size
+          with open("repo.json", "w", encoding="utf-8") as f:
+              json.dump(repo, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+
+          print("IPK:", filename)
+          print("Size:", size)
+          print("SHA256:", sha)
+          PY
+
+      - name: Commit verified package
+        run: |
+          set -euxo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add com.marcos.app.unitvnet_1.0.3_all.ipk manifest.json repo.json
+          git commit -m "Build UniTV Net 1.0.3 with official webOS CLI"
+          git push
