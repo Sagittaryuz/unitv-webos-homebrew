@@ -9,7 +9,7 @@
   "rootRequired": false,
   "ipkUrl": "https://raw.githubusercontent.com/Sagittaryuz/unitv-webos-homebrew/main/com.marcos.app.unitvnet_1.0.0_all.ipk",
   "ipkHash": {
-    "sha256": "5a63c4b5af7fce706eeb2aefb96dc722971ad3670d2df3825f5c31080cab3575"
+    "sha256": "ed04095ed7fbdc4cea2c60104d8750774e92663b066a1bcb479d8682d1478939"
   },
-  "ipkSize": 3602
+  "ipkSize": 2386
 }

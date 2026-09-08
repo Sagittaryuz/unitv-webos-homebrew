@@ -13,8 +13,8 @@ Repositório pessoal para instalar o wrapper **UniTV Net** no LG webOS pelo Home
 - Tipo: web
 - Root necessário: não
 - Destino web atual: `https://www.uvnetweb.pro/`
-- SHA-256 do IPK: `5a63c4b5af7fce706eeb2aefb96dc722971ad3670d2df3825f5c31080cab3575`
-- Tamanho do IPK: `3602` bytes
+- SHA-256 do IPK: `ed04095ed7fbdc4cea2c60104d8750774e92663b066a1bcb479d8682d1478939`
+- Tamanho do IPK: `2386` bytes
 
 ## Instalação
 
