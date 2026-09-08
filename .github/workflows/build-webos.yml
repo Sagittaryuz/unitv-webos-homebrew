@@ -3,6 +3,8 @@ name: Build and publish webOS IPK
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - "app/**"
       - ".github/workflows/build-webos.yml"
@@ -31,14 +33,14 @@ jobs:
           mkdir -p build
           cp icon.png app/icon.png
           ares-package -o build app
-          ares-package -I build/com.marcos.app.unitvnet_1.0.3_all.ipk
-          mv build/com.marcos.app.unitvnet_1.0.3_all.ipk ./com.marcos.app.unitvnet_1.0.3_all.ipk
+          ares-package -I build/com.marcos.app.unitvnet_1.0.4_all.ipk
+          mv build/com.marcos.app.unitvnet_1.0.4_all.ipk ./com.marcos.app.unitvnet_1.0.4_all.ipk
 
       - name: Update Homebrew metadata
         run: |
           python3 - <<'PY'
           import hashlib, json
-          version = "1.0.3"
+          version = "1.0.4"
           filename = f"com.marcos.app.unitvnet_{version}_all.ipk"
           with open(filename, "rb") as f:
               data = f.read()
@@ -77,7 +79,7 @@ jobs:
           set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add com.marcos.app.unitvnet_1.0.3_all.ipk manifest.json repo.json
-          git commit -m "Build UniTV Net 1.0.3 with official webOS CLI"
+          git add com.marcos.app.unitvnet_1.0.4_all.ipk manifest.json repo.json
+          git commit -m "Build UniTV Net 1.0.4 with official webOS CLI"
           git pull --rebase origin main
           git push
